@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9091,localhost:9092,localhost:9093
+    producer:
+      bootstrap-servers: localhost:9091,localhost:9092,localhost:9093
+      acks: -1
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600
+      circuitBreaker:
+        requestVolumeThreshold: 10
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 10000
